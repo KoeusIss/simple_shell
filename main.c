@@ -1,4 +1,6 @@
 #include "shell.h"
+#define PROMPT "#Cisfun$ "
+#define DELIMITER " \n\t\a\r"
 
 /**
  * main - the main function of the hsh project
@@ -7,32 +9,28 @@
  */
 int main(void)
 {
-	char *buffer;
-	char prompt[] = "#Cisfun$ ";
-	char delim[] = " \n\t\a";
-	int read, status;
+	char *cmd, *buffer, **av;
+	int read = 1, status = 1;
 	size_t size = BUFFER_SIZE;
-	char **av;
-	pid_t pid;
 
-	buffer = malloc(BUFFER_SIZE);
+	buffer = malloc(size);
 	if (!buffer)
-		error(1);
-	while (read != (-1))
+		return (-1);
+	while (status)
 	{
-		printf("%s", prompt);
+		printf(PROMPT);
 		read = getline(&buffer, &size, stdin);
-		av = tokenize(buffer, delim);
-		pid = fork();
-		if (pid == -1)
-			perror("./shell");
-		if (pid == 0)
+		if (read == (-1))
 		{
-			if (execve(_which(av[0]), av, NULL) == -1)
-				perror("./shell");
+			free(buffer);
+			break;
 		}
-		else
-			wait(&status);
+		av = tokenize(buffer, DELIMITER);
+		cmd = _which(av[0]);
+		status = execute_cmd(cmd, av);
+		free(buffer);
+		free(av);
+		free(cmd);
 	}
 	return (0);
 }

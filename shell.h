@@ -10,11 +10,12 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <stdarg.h>
 
 /* Macros */
 
-#define MAX_TOKEN 512
-#define BUFFER_SIZE 1024
+#define MAX_TOKEN 64
+#define BUFFER_SIZE 256
 
 /* Structs */
 
@@ -34,9 +35,12 @@ typedef struct error
 
 /* Prototypes */
 void error(int);
-char **tokenize(char *, char *);
-int _strlen(char *);
-char *path_concat(char *, char *);
-char *_which(char *);
+char **tokenize(char *line, char *delimiter);
+int _strlen(char *str);
+char *_strcat(char *first, char *second);
+char *_which(char *command);
+void *_realloc(void *ptr, unsigned int old, unsigned int new);
+int execute_cmd(char *cmd, char **args);
+void *fill_an_array(void *a, int el, unsigned int len);
 
 #endif /* SHELL_H */
