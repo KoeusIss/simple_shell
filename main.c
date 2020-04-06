@@ -22,6 +22,7 @@ int main(void)
 		read = getline(&buffer, &size, stdin);
 		if (read == (-1))
 		{
+			printf("\n");
 			free(buffer);
 			break;
 		}
