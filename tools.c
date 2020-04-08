@@ -1,12 +1,3 @@
-/**
- * Holberton School Project - Simple Shell
- * Author: KoeusIss
- * 
- * Tools - collection of tools
- * fill_array: finds string length
- * _realloc: reallocate a memory for an array
- *
- */
 #include "shell.h"
 
 /**

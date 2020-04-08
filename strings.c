@@ -1,32 +1,22 @@
-/**
- * Holberton School Project - Simple Shell
- * Author: KoeusIss
- * 
- * Strings - collection of string manupilation tools
- * _strlen: finds string length
- * _strcat: concatnates strings
- * _strdup: duplicates a string in another one
- * _strcmp: compares two strings
- * _strtok: splits a given string to tokens
- *
- */
 #include "shell.h"
 
 /**
  * _strlen - finds the length of string
  * @str: the given string
  *
+ * Return: the length of the string
  */
 int _strlen(char *str)
 {
 	int len = 0;
+
 	while (str[len])
 		len++;
 	return (len);
 }
 
 /**
- * path_concat - concatenates two string
+ * _strcat - concatenates two string
  * @first: the first given destination
  * @second: the second given source
  *
@@ -35,7 +25,7 @@ int _strlen(char *str)
  */
 char *_strcat(char *first, char *second)
 {
-	int len1, len2, i =0, j = 0;
+	int len1, len2, i = 0, j = 0;
 	char *result;
 
 	len1 = _strlen(first);
@@ -106,12 +96,3 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (cmp);
 }
-
-/**
- * _strtok - Splits a given string to tokens
- * @str: a given string
- * @delim: the delimiter
- *
- * Return: a pointer to the first token
- * --------(NULL) if it fails
- */

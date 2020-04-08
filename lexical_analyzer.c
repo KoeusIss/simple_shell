@@ -1,11 +1,3 @@
-/**
- * Holberton School Project - Simple Shell
- * Author: KoeusIss
- *
- * Lexical Analyzer - a Lexical analyser of the buffer given user input, we
- * tokenize the @line given by the user and returns an array of tokens until
- * we receive an empty line we return a (null) pointer.
- */
 #include "shell.h"
 
 /**

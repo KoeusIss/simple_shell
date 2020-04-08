@@ -1,16 +1,9 @@
-/**
- * Holberton School Project - Simple Shell
- * Author: KoeusIss
- *
- * Launcher - a file to handle the execute, and system call functions.
- * a launcher is a pltform to working with command in final lexical form
- * helps to seperate the execution and process call function
- */
 #include "shell.h"
 
 /**
- * execute_cmd - Executes command 
- * @av: Argument vector
+ * execute_cmd - calls command line
+ * @cmd: a given command line
+ * @args: the given arguments vector
  *
  * Return: (1) if succeed
  * --------(-1) if it fails

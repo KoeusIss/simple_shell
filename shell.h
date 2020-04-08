@@ -26,6 +26,7 @@
 /**
  * struct built_in - the struct of built_in function
  * @name: the name of the built_in function
+ * @f: a  function pointer
  * Description: this struct allow us to handle the different error
  * of all the project
  * We may call the code, add, move and fix the error in one place.
@@ -63,9 +64,5 @@ int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *first, char *second);
 char *_strdup(char *str);
-
-/* Error */
-
-void error(int);
 
 #endif /* SHELL_H */
