@@ -2,49 +2,74 @@
  * Holberton School Project - Simple Shell
  * Author: KoeusIss
  * 
- * Tools - A bunch of usefull function helps to allocate, reallocate, sizeof
- * String length determines, concatenates string...
+ * Tools - collection of tools
+ * fill_array: finds string length
+ * _realloc: reallocate a memory for an array
+ *
  */
 #include "shell.h"
 
 /**
- * _strlen - finds the length of string
- * @str: the given string
+ * fill_an_array - fill an array with elements
+ * @a: the given array
+ * @el: the given element
+ * @len: the length of the array
  *
+ * Return: pointer to filled array
  */
-int _strlen(char *str)
+void *fill_an_array(void *a, int el, unsigned int len)
 {
-	int len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	char *p = a;
+	unsigned int i = 0;
+
+	while (i < len)
+	{
+		*p = el;
+		p++;
+		i++;
+	}
+	return (a);
 }
-
 /**
- * path_concat - concatenates two string
- * @first: the first given destination
- * @second: the second given source
+ * _realloc - reallocates memory block
+ * @ptr: pointer to the previous memory
+ * @old_size: the old size
+ * @new_size: the new size
  *
- * Return: (*pointer) to the newly string
- * --------(NULL) if it failed
+ * Return: a pointer to the newly allocated memory
  */
-char *_strcat(char *first, char *second)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	int len1, len2, i =0, j = 0;
-	char *result;
+	void *result;
+	unsigned int i;
+	char *p;
 
-	len1 = _strlen(first);
-	len2 = _strlen(second);
-	result = malloc((len1 + len2 + 2) * sizeof(char));
-	if (!result)
+	if (new_size == old_size)
+		return (ptr);
+	if (new_size == 0 && ptr)
+	{
+		free(ptr);
 		return (NULL);
-	*result = '\0';
-	while (first[j])
-		result[i++] = first[j++];
-	result[i++] = '/';
-	j = 0;
-	while (second[j])
-		result[i++] = second[j++];
-	result[i] = '\0';
+	}
+	result = malloc(new_size);
+	if (result == NULL)
+		return (NULL);
+	if (ptr == NULL)
+	{
+		fill_an_array(result, '\0', new_size);
+		free(ptr);
+	}
+	else
+	{
+		i = 0;
+		p = ptr;
+		while (i < old_size)
+		{
+			fill_an_array(result, *p, old_size);
+			p++;
+			i++;
+		}
+		free(ptr);
+	}
 	return (result);
 }

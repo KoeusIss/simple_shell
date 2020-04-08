@@ -9,6 +9,7 @@
 #include "shell.h"
 #define PATH_DELIM ":"
 
+
 /**
  * _which - locates the given filename if the path
  * @filename: the given filename
@@ -24,11 +25,11 @@ char *_which(char *filename)
 
 	path = getenv("PATH");
 	_path = strdup(path);
-	paths = tokenize(_path, PATH_DELIM);
 	if (stat(filename, &st) == 0)
 		return (filename);
 	else
 	{
+		paths = tokenize(_path, PATH_DELIM);
 		while (paths[i])
 		{
 			cmd = _strcat(paths[i], filename);

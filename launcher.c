@@ -26,14 +26,9 @@ int execute_cmd(char *cmd, char **args)
 	else if (pid == 0)
 	{
 		if (execve(cmd, args, NULL) < 0)
-		{
 			return (-1);
-		}
 	}
 	else
-	{
 		wait(&status);
-	}
-	
 	return (1);
 }
