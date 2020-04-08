@@ -24,20 +24,6 @@
 /* Structs */
 
 /**
- * struct error - the list of error
- * @code: the error code
- * @txt: the error text
- * Description: this struct allow us to handle the different error
- * of all the project
- * We may call the code, add, move and fix the error in one place.
- */
-typedef struct error
-{
-	int code;
-	char *txt;
-} err_t;
-
-/**
  * struct built_in - the struct of built_in function
  * @name: the name of the built_in function
  * Description: this struct allow us to handle the different error
