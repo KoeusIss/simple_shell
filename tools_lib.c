@@ -1,6 +1,25 @@
 #include "shell.h"
 
 /**
+ * _memcpy - cpies memory area
+ * @dest: Destination memory area
+ * @src: Source memory area
+ * @n: Amount of memory byte
+ *
+ * Return: A pointer to dest
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+	{
+		dest[i] = src[i];
+	}
+	return (dest);
+}
+
+/**
  * fill_an_array - fill an array with elements
  * @a: the given array
  * @el: the given element
@@ -21,6 +40,7 @@ void *fill_an_array(void *a, int el, unsigned int len)
 	}
 	return (a);
 }
+
 /**
  * _realloc - reallocates memory block
  * @ptr: pointer to the previous memory
@@ -32,8 +52,6 @@ void *fill_an_array(void *a, int el, unsigned int len)
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *result;
-	unsigned int i;
-	char *p;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -52,14 +70,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-		i = 0;
-		p = ptr;
-		while (i < old_size)
-		{
-			fill_an_array(result, *p, old_size);
-			p++;
-			i++;
-		}
+		_memcpy(result, ptr, old_size);
 		free(ptr);
 	}
 	return (result);

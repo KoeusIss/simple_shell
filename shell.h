@@ -1,68 +1,40 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-/* Header libraries */
+/* Header file */
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include <errno.h>
-#include <stdarg.h>
 
 /* Macros */
+#define BUF_SIZE 256
 
-#define MAX_TOKEN 64
-#define BUFFER_SIZE 256
+/* Global variable */
+extern char **environ;
 
-/* Global variables */
+/* Prototypes */
+char *read_line(char *prompt);
+char **parse_line(char *line);
+int execute_cmd(char **cmd);
+void *fill_array(void *arr, int el, size_t len);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memcpy(char *dest, char *src, unsigned int n);
+char *_which(char *cmd);
 
+/* builtins */
+int cd(char *path);
 
-
-/* Structs */
-
-/**
- * struct built_in - the struct of built_in function
- * @name: the name of the built_in function
- * @f: a  function pointer
- * Description: this struct allow us to handle the different error
- * of all the project
- * We may call the code, add, move and fix the error in one place.
- */
-typedef struct built_in
-{
-	char *name;
-	int (*f)(char *);
-} blt_in;
-
-/* Launcher */
-
-int execute_cmd(char *cmd, char **args);
-
-/* Parser */
-
-char *_which(char *command);
-
-/* Lexical analyzer */
-
-char **tokenize(char *line, char *delimiter);
-
-/* Built-ins */
-
-int quit(void);
-
-/* Tools */
-
-void *_realloc(void *ptr, unsigned int old, unsigned int new);
-void *fill_an_array(void *a, int el, unsigned int len);
-
-/* Strings */
-
+/* String */
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
-char *_strcat(char *first, char *second);
+char *_strcat(char *dest, char *src);
+char *_strchr(char *str, char c);
 char *_strdup(char *str);
 
 #endif /* SHELL_H */
