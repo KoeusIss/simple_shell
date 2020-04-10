@@ -12,6 +12,7 @@ int main(void)
 	char **cmd;
 	int status;
 
+	signal(SIGINT, sig_handler);
 	while (1)
 	{
 		line = read_line(PROMPT);
@@ -38,7 +39,7 @@ int main(void)
 	}
 	free(line);
 	free(cmd);
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -57,7 +58,8 @@ char *read_line(char *prompt)
 	line = malloc(size * sizeof(line));
 	if (line == NULL)
 		return (NULL);
-	write(STDOUT_FILENO, prompt, _strlen(prompt));
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, prompt, _strlen(prompt));
 	for (start = line, end = line + size;;)
 	{
 		read_r = read(STDIN_FILENO, &c, 1);
@@ -142,6 +144,7 @@ int execute_cmd(char **filename)
 	pid = fork();
 	if (pid == 0)
 	{
+		signal(SIGINT, SIG_DFL);
 		if (execve(cmd, filename, environ) == -1)
 			return (-1);
 	}
@@ -164,7 +167,7 @@ char *_which(char *filename)
 	char *path, *p, **path_v, *cmd, *token;
 	struct stat st;
 	size_t i = 0, size = TOKEN_SIZE, new_size;
-	
+
 	path = getenv("PATH");
 	if (path == NULL)
 		path = ":bin:/usr/bin";
@@ -194,7 +197,7 @@ char *_which(char *filename)
 	while (path_v[i])
 	{
 		cmd = _strcat(path_v[i], filename);
-		if (stat(cmd, &st) == 0)
+		if (is_cmd(cmd))
 			break;
 		i++;
 	}

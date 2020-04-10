@@ -75,3 +75,32 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	return (result);
 }
+
+/**
+ * is_cmd - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
+ *
+ * Return: 1 if true, 0 otherwise
+ */
+int is_cmd(char *path)
+{
+	struct stat st;
+
+	if (!path || stat(path, &st))
+		return (0);
+
+	if (st.st_mode & S_IFREG)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+void sig_handler(int sig_num)
+{
+	if (sig_num == SIGINT)
+	{
+		write(STDOUT_FILENO, "\n#cisfun$ ", _strlen("\n#cisfun$ "));
+	}
+}

@@ -10,6 +10,7 @@
 int _strlen(char *str)
 {
 	char *ptr;
+
 	if (str == NULL)
 		return (-1);
 	for (ptr = str; *ptr; ptr++)
