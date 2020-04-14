@@ -1,13 +1,12 @@
 #include "shell.h"
 /**
  * _getenv - gets the path
- * @data: a pointer to the struct of data
- * @path_name: a path_name
+ * @path_name: a pointer to the struct of data
  *
  * Return: (Success) a positive number
  * ------- (Fail) a negative number
  */
-char *_getenv(char *path_name, sh_t *data)
+char *_getenv(char *path_name)
 {
 	int i = 0;
 	char *token;
@@ -22,7 +21,6 @@ char *_getenv(char *path_name, sh_t *data)
 			if (_strcmp(token, path_name) == 0)
 			{
 				token = strtok(NULL, "=");
-				data->env = env;
 				return (token);
 			}
 			token = strtok(NULL, "=");

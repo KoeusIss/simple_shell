@@ -1,6 +1,6 @@
 #include "shell.h"
 
-#define SETOWD(V) (V = _strdup(_getenv("OLDPWD", data)))
+#define SETOWD(V) (V = _strdup(_getenv("OLDPWD")))
 /**
  * change_dir - changes directory
  * @data: a pointer to the data structure
@@ -12,7 +12,7 @@ int change_dir(sh_t *data)
 {
 	char *home;
 
-	home = _getenv("HOME", data);
+	home = _getenv("HOME");
 	if (data->args[1] == NULL)
 	{
 		SETOWD(data->oldpwd);

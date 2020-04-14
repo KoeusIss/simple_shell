@@ -87,7 +87,7 @@ int free_data(sh_t *);
 /* ----------Tools prototype-------------*/
 void *fill_an_array(void *a, int el, unsigned int len);
 void signal_handler(int signo);
-char *_getenv(char *path_name, sh_t *data);
+char *_getenv(char *path_name);
 void index_cmd(sh_t *data);
 void array_rev(char *arr, int len);
 

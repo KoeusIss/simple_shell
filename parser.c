@@ -28,7 +28,7 @@ void is_short_form(sh_t *data)
 	char *path, *token, *_path;
 	struct stat st;
 
-	path = _getenv("PATH", data);
+	path = _getenv("PATH");
 	_path = _strdup(path);
 	token = strtok(_path, DELIMITER);
 	while (token)
