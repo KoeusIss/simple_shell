@@ -1,7 +1,0 @@
-.TH HSH 1
-.SH NAME
-hsh \- command line interpreter
-.SH SYNOPSIS
-.B hsh
-.SH DESCRIPTION
-.B hsh command line interpreter
