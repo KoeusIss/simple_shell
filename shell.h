@@ -20,7 +20,7 @@ extern char **environ;
 #define BUFSIZE 256
 #define TOKENSIZE 64
 #define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
-#define PROMPT "#hsh-$ "
+#define PROMPT "$ "
 #define SUCCESS (1)
 #define FAIL (-1)
 #define NEUTRAL (0)

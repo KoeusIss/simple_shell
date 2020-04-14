@@ -166,7 +166,7 @@ int process_cmd(sh_t *data)
 	{
 		signal(SIGINT, SIG_DFL);
 		if (execve(data->cmd, data->args, environ) < 0)
-		data->error_msg = _strdup("command not found\n");
+		data->error_msg = _strdup("not found\n");
 			return (FAIL);
 	}
 	else
