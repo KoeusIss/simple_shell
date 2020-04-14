@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * itoa - convert integer to array
+ * _itoa - convert integer to array
  * @n: the given number
  *
  * Return: a pointer to the null terminated string
  */
-char *itoa(unsigned int n)
+char *_itoa(unsigned int n)
 {
 	int len = 0, i = 0;
 	char *s;
@@ -77,7 +77,7 @@ int intlen(int num)
 int print_error(sh_t *data)
 {
 	PRINT("hsh: ");
-	PRINT(itoa(data->index));
+	PRINT(_itoa(data->index));
 	PRINT(": ");
 	PRINT(data->args[0]);
 	PRINT(": ");

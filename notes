@@ -1,6 +1,0 @@
-cd somthing (wrong return)
-cd .. nothing in return
-cd - go home
-
-
-[ls] [-l] [;] [pwd] ; [clear]

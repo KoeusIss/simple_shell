@@ -92,7 +92,7 @@ void index_cmd(sh_t *data);
 void array_rev(char *arr, int len);
 
 /* ----------More tools prototype--------*/
-char *itoa(unsigned int n);
+char *_itoa(unsigned int n);
 int intlen(int num);
 int _atoi(char *c);
 int print_error(sh_t *data);
