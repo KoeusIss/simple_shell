@@ -90,7 +90,7 @@ int read_line(sh_t *data)
 		}
 	}
 }
-#define DELIMITER " \n\t\r\a"
+#define DELIMITER " \n\t\r\a\v"
 /**
  * split_line - splits line to tokens
  * @data: a pointer to the struct of data
@@ -175,4 +175,3 @@ int process_cmd(sh_t *data)
 	}
 	return (0);
 }
-
