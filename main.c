@@ -81,7 +81,7 @@ int read_line(sh_t *data)
 		{
 			new_size = size * 2;
 			length = csr_ptr - data->line;
-			data->line = realloc(data->line, new_size * sizeof(char));
+			data->line = _realloc(data->line, new_size * sizeof(char));
 			if (data->line == NULL)
 				return (FAIL);
 			size = new_size;
