@@ -8,25 +8,23 @@
  */
 char *_getenv(char *path_name)
 {
-	int i = 0;
-	char *token;
-	char *env;
+	char **environ_cursor, *env_ptr, *name_ptr;
 
-	while (environ[i])
+	environ_cursor = environ;
+	while (*environ_cursor)
 	{
-		env = _strdup(environ[i]);
-		token = strtok(env, "=");
-		while (token)
+		env_ptr = *environ_cursor;
+		name_ptr = path_name;
+		while(*env_ptr == *name_ptr)
 		{
-			if (_strcmp(token, path_name) == 0)
-			{
-				token = strtok(NULL, "=");
-				return (token);
-			}
-			token = strtok(NULL, "=");
+			if (*env_ptr == '=')
+				break;
+			env_ptr++;
+			name_ptr++;
 		}
-		free(env);
-		i++;
+		if ((*env_ptr == '=') && (*name_ptr == '\0'))
+			return (env_ptr + 1);
+		environ_cursor++;
 	}
 	return (NULL);
 }

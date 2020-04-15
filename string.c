@@ -37,13 +37,10 @@ char *_strcat(char *first, char *second)
  */
 int _strlen(char *str)
 {
-	char *ptr;
+	int len;
 
-	if (str == NULL)
-		return (-1);
-	for (ptr = str; *ptr; ptr++)
-		;
-	return (ptr - str);
+	for (len = 0; str[len]; len++);
+	return (len);
 }
 /**
  * _strcmp - compare two strings
