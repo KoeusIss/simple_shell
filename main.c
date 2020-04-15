@@ -109,6 +109,8 @@ int split_line(sh_t *data)
 	if (data->args == NULL)
 		return (FAIL);
 	token = strtok(data->line, DELIMITER);
+	if (token == NULL)
+		return (FAIL);
 	while (token)
 	{
 		data->args[i++] =  token;
@@ -124,8 +126,6 @@ int split_line(sh_t *data)
 		token = strtok(NULL, DELIMITER);
 	}
 	data->args[i] = NULL;
-	if (*data->args == NULL || data->args == NULL)
-		return (FAIL);
 	return (0);
 }
 #undef DELIMITER
