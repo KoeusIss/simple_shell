@@ -27,6 +27,7 @@ void is_short_form(sh_t *data)
 {
 	char *path, *token, *_path;
 	struct stat st;
+	int exist_flag = 0;
 
 	path = _getenv("PATH");
 	_path = _strdup(path);
@@ -35,12 +36,17 @@ void is_short_form(sh_t *data)
 	{
 		data->cmd = _strcat(token, data->args[0]);
 		if (stat(data->cmd, &st) == 0)
+		{
+			exist_flag += 1;
 			break;
+		}
 		free(data->cmd);
 		token = strtok(NULL, DELIMITER);
 	}
-	if (*data->cmd == '\0')
+	if (exist_flag == 0)
+	{
 		data->cmd = _strdup(data->args[0]);
+	}
 	free(_path);
 }
 #undef DELIMITER

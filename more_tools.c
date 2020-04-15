@@ -15,6 +15,7 @@ char *_itoa(unsigned int n)
 	s = malloc(len + 1);
 	if (!s)
 		return (NULL);
+	*s = '\0';
 	while (n / 10)
 	{
 		s[i] = (n % 10) + '0';
@@ -76,12 +77,14 @@ int intlen(int num)
  */
 int print_error(sh_t *data)
 {
+	char *idx = _itoa(data->index);
 	PRINT("hsh: ");
-	PRINT(_itoa(data->index));
+	PRINT(idx);
 	PRINT(": ");
 	PRINT(data->args[0]);
 	PRINT(": ");
 	PRINT(data->error_msg);
+	free(idx);
 	return (0);
 }
 

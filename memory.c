@@ -67,6 +67,8 @@ int free_data(sh_t *data)
 	data->args = NULL;
 	free(data->cmd);
 	data->cmd = NULL;
+	free(data->error_msg);
+	data->error_msg = NULL;
 	return (0);
 }
 /**

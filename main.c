@@ -46,7 +46,7 @@ int main(void)
 		free_data(&data);
 	}
 	free_data(&data);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 /**
