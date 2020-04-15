@@ -11,7 +11,7 @@ int main(void)
 	sh_t data;
 	int pl;
 
-	memset(&data, 0, sizeof(data));
+	_memset((void *)&data, 0, sizeof(data));
 	signal(SIGINT, signal_handler);
 	while (1)
 	{
