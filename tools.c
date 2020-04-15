@@ -15,7 +15,7 @@ char *_getenv(char *path_name)
 	{
 		env_ptr = *environ_cursor;
 		name_ptr = path_name;
-		while(*env_ptr == *name_ptr)
+		while (*env_ptr == *name_ptr)
 		{
 			if (*env_ptr == '=')
 				break;

@@ -78,6 +78,7 @@ int intlen(int num)
 int print_error(sh_t *data)
 {
 	char *idx = _itoa(data->index);
+
 	PRINT("hsh: ");
 	PRINT(idx);
 	PRINT(": ");

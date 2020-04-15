@@ -39,7 +39,11 @@ int _strlen(char *str)
 {
 	int len;
 
-	for (len = 0; str[len]; len++);
+	if (str == NULL)
+		return (0);
+
+	for (len = 0; str[len]; len++)
+		;
 	return (len);
 }
 /**
@@ -80,6 +84,8 @@ char *_strchr(char *str, char c)
 {
 	char *ptr;
 
+	if (str == NULL)
+		return (NULL);
 	for (ptr = str; *ptr; ptr++)
 		if (*ptr == c)
 			return (ptr);
