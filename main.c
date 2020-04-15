@@ -124,7 +124,7 @@ int split_line(sh_t *data)
 		token = strtok(NULL, DELIMITER);
 	}
 	data->args[i] = NULL;
-	if (*data->args == 0)
+	if (*data->args == NULL || data->args == NULL)
 		return (FAIL);
 	return (0);
 }
