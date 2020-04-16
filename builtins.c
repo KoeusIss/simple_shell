@@ -62,7 +62,7 @@ int abort_prg(sh_t *data __attribute__((unused)))
 	}
 	while (data->args[1][i])
 	{
-		if (_isalpha(data->args[1][i++]) > 0)
+		if (_isalpha(data->args[1][i++]) < 0)
 		{
 			data->error_msg = _strdup("Illegal number\n");
 			return (FAIL);
