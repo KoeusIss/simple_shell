@@ -64,5 +64,8 @@ You need to make sure that this shell tested and garantees work based on `gcc-4.
 * Support the aliases `alias [name [='value'] ...]`
 * Display help `help [BUILTIN]`
 * Display history `history`
-## Author
-KoeusIss - Sebri Issam - Holberton Student
+
+
+
+## Authors
+Issam Sebri - Machine learning enthusiast & full stack developer - [Linkedin](https://www.linkedin.com/in/issam-sebri/) - [Twitter](https://twitter.com/KoeusIss)
